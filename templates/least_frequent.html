@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/eb64d71f74.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPLOTI - Números Menos Frecuentes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="date"] {
+            margin: 0 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: rgb(11, 104, 239);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: rgb(8, 71, 163);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgb(11, 104, 239);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        .regresar-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            color: black;
+            background: none;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .regresar-btn i {
+            margin-right: 8px;
+            font-size: 18px; /* Customize size of the icon */
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="regresar-btn"><i class="fas fa-arrow-left"></i>Regresar</a>
+    <div class="container">
+        <h1>Números Menos Frecuentes</h1>
+        <form action="/least_frequent" method="post">
+            <label>Rango de Fechas:
+                <input type="date" name="fecha_inicio" value="{{ fecha_inicio }}" required>
+                <input type="date" name="fecha_fin" value="{{ fecha_fin }}" required>
+            </label>
+            <button type="submit">Enviar</button>
+        </form>
+
+        {% if frecuencias %}
+        <p>Estos son los números menos frecuentes entre {{ fecha_inicio }} y {{ fecha_fin }}</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Frecuencia</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for numero, data in frecuencias %}
+                <tr>
+                    <td>{{ numero }}</td>
+                    <td>{{ data['count'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>No hay resultados para mostrar. Por favor, seleccione un rango de fechas.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

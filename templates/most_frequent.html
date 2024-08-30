@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/eb64d71f74.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPLOTI - Números que Más Salen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="date"] {
+            margin: 0 10px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: rgb(11, 94, 215);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: rgb(8, 71, 163);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgb(11, 104, 239);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        .regresar-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            color: black;
+            background: none;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .regresar-btn i {
+            margin-right: 8px;
+            font-size: 18px; /* Customize size of the icon */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="regresar-btn"><i class="fas fa-arrow-left"></i>Regresar</a>
+        <h1>Números Más Frecuentes</h1>
+        <form action="/most_frequent" method="post">
+            <label>Seleccione Rango de Fecha:
+                <input type="date" name="fecha_inicio" required>
+                <input type="date" name="fecha_fin" required>
+            </label>
+            <button type="submit">Enviar</button>
+        </form>
+
+        {% if frecuencias %}
+            {% set fecha_inicio_parts = fecha_inicio.split('-') %}
+            {% set fecha_fin_parts = fecha_fin.split('-') %}
+            {% set fecha_inicio_formateada = fecha_inicio_parts[2] ~ '-' ~ fecha_inicio_parts[1] ~ '-' ~ fecha_inicio_parts[0] %}
+            {% set fecha_fin_formateada = fecha_fin_parts[2] ~ '-' ~ fecha_fin_parts[1] ~ '-' ~ fecha_fin_parts[0] %}
+            
+            <p>Estos son los números más frecuentes entre {{ fecha_inicio_formateada }} y {{ fecha_fin_formateada }}:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Número</th>
+                        <th>Frecuencia</th>
+                        <th>Paridad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for num, count, paridad in frecuencias %}
+                    <tr>
+                        <td>{{ num }}</td>
+                        <td>{{ count }}</td>
+                        <td>{{ paridad }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No hay resultados para mostrar. Por favor, seleccione un rango de fechas.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

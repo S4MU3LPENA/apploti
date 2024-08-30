@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/eb64d71f74.js" crossorigin="anonymous"></script>
+    <title>Frecuencias de Numeros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <a href="/" class="regresar-btn"><i class="fas fa-arrow-left"></i>Regresar</a>
+        <h1 class="text-center mb-4">Frecuencias de Numeros</h1>
+        
+        <!-- Formulario para buscar frecuencia de número individual -->
+        <form method="POST" class="mb-5">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="numero" class="form-label">Número Individual</label>
+                    <input type="text" class="form-control" id="numero" name="numero" placeholder="Ingrese un número">
+                </div>
+                <div class="col-md-6">
+                    <label for="anio" class="form-label">Año</label>
+                    <input type="text" class="form-control" id="anio" name="anio" placeholder="Ingrese un año (e.g., 2024)" required>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="mes" class="form-label">Mes</label>
+                    <input type="text" class="form-control" id="mes" name="mes" placeholder="Ingrese un mes (opcional)">
+                </div>
+            </div>
+
+            <!-- Formulario para buscar frecuencia de combinación de tres números -->
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label for="numero1" class="form-label">Número 1</label>
+                    <input type="text" class="form-control" id="numero1" name="numero1" placeholder="Ingrese el primer número">
+                </div>
+                <div class="col-md-4">
+                    <label for="numero2" class="form-label">Número 2</label>
+                    <input type="text" class="form-control" id="numero2" name="numero2" placeholder="Ingrese el segundo número">
+                </div>
+                <div class="col-md-4">
+                    <label for="numero3" class="form-label">Número 3</label>
+                    <input type="text" class="form-control" id="numero3" name="numero3" placeholder="Ingrese el tercer número">
+                </div>
+            </div>
+            <a href="/filter_even_numbers" class="btn btn-primary">Tripletas de Numeros Pares</a>
+            <button type="submit" class="btn btn-primary">Buscar Frecuencia</button>
+        </form>
+
+        <!-- Resultados -->
+        {% if frequency is not none %}
+            <div class="alert alert-info" role="alert">
+                Frecuencia del número {{ numero }}: {{ frequency }} veces.
+            </div>
+        {% endif %}
+        
+        {% if frequency_combination is not none %}
+            <div class="alert alert-success" role="alert">
+                Frecuencia de la combinación {{ numero1 }}, {{ numero2 }}, {{ numero3 }}: {{ frequency_combination }} veces.
+            </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

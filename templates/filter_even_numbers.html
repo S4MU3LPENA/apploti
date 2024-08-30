@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script src="https://kit.fontawesome.com/eb64d71f74.js" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripleta Pares</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    
+<div class="container mt-5">
+    <a href="/check_number_frequency" class="regresar-btn"><i class="fas fa-arrow-left"></i>Regresar</a>
+    <h1 class="mb-4">TRIPLETAS NUMEROS PARES</h1>
+    <!-- Filtros -->
+    <form method="POST" class="form-inline mb-4">
+        <div class="form-group mr-2">
+            <label for="year" class="mr-2">Año:</label>
+            <input type="number" class="form-control" id="year" name="year" placeholder="Ej. 2023">
+        </div>
+        <div class="form-group mr-2">
+            <label for="month" class="mr-2">Mes:</label>
+            <select class="form-control" id="month" name="month">
+                <option value="">Seleccione un mes</option>
+                {% for i in range(1, 13) %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Filtrar</button>
+    </form>
+
+    <!-- Tabla de Resultados -->
+    {% if resultados %}
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Número 1</th>
+                <th>Número 2</th>
+                <th>Número 3</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resultado in resultados %}
+                <tr>
+                    <td>{{ resultado[0] }}</td>
+                    <td>{{ resultado[1] }}</td>
+                    <td>{{ resultado[2] }}</td>
+                    <td>{{ resultado[3] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No se encontraron resultados para los criterios seleccionados.</p>
+    {% endif %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

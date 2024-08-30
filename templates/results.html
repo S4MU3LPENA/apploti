@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://kit.fontawesome.com/eb64d71f74.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f9; /* Fondo claro */
+            color: #333; /* Color de texto principal */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            color: #333; /* Color del título */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fff; /* Fondo blanco para la tabla */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            overflow: hidden; /* Para evitar que los bordes redondeados se corten en las celdas */
+        }
+
+        th, td {
+            padding: 12px; /* Más espacio en las celdas */
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Bordes en las celdas */
+        }
+
+        th {
+            background-color: rgb(11, 94, 215);
+            color: #fff; /* Texto blanco en el encabezado */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Fondo alternativo para las filas pares */
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+            
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .regresar-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            color: black;
+            background: none;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .regresar-btn i {
+            margin-right: 8px;
+            font-size: 18px; /* Customize size of the icon */
+        }
+    
+    </style>
+</head>
+<body>
+    <a href="/" class="regresar-btn"><i class="fas fa-arrow-left"></i>Regresar</a>
+    <h1>TODOS LOS RESULTADOS</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Primer Número</th>
+                <th>Segundo Número</th>
+                <th>Tercer Número</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for fecha, numero1, numero2, numero3 in resultados %}
+            <tr>
+                <td>{{ fecha }}</td>
+                <td>{{ numero1 }}</td>
+                <td>{{ numero2 }}</td>
+                <td>{{ numero3 }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

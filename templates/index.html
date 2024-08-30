@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPLOTI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9; /* Fondo claro */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Altura mínima de la ventana */
+            margin-bottom: 60px; /* Espacio para el pie de página */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: #fff; /* Fondo blanco */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            margin-bottom: 20px; /* Espacio entre la lista y el enlace de texto */
+        }
+
+        li {
+            display: inline-block;
+            margin: 0 15px; /* Espacio a los lados de los elementos */
+        }
+
+        a.list-nv {
+            display: block;
+            padding: 15px 20px; /* Relleno en los enlaces */
+            text-decoration: none; /* Sin subrayado */
+            color: #333; /* Color del texto */
+            border-radius: 4px; /* Bordes redondeados */
+            transition: background-color 0.3s ease; /* Transición suave */
+        }
+
+        a.list-nv:hover {
+            background-color: rgb(11, 94, 215); /* Verde claro al pasar el mouse */
+            color: #fff; /* Texto blanco al pasar el mouse */
+        }
+
+        .link-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%; /* Ancho completo para centrar */
+            margin-bottom: 20px; /* Espacio entre el enlace y la tabla */
+        }
+
+        .link-text {
+            text-decoration: none; /* Sin subrayado */
+            color: #333; /* Color del texto */
+            font-weight: normal; /* Texto normal */
+            font-size: 16px; /* Tamaño de fuente */
+            transition: color 0.3s ease; /* Transición suave para el color */
+        }
+
+        .link-text:hover {
+            color: rgb(11, 94, 215); /* Color al pasar el mouse */
+        }
+
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .container-custom {
+            color: #333; /* Color de texto para una mejor legibilidad */
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+            max-width: 600px; /* Ancho máximo del contenedor */
+            margin: 0 auto; /* Centrando horizontalmente */
+            text-align: center; /* Centrado del texto */
+        }
+        .icon-header {
+            font-size: 2rem;
+            margin-right: 0.5rem;
+        }
+        .section-title {
+            font-weight: bold;
+            color: rgb(11, 94, 215);
+        }
+        .icon-list {
+            color: rgb(11, 94, 215);
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="mt-5">APPLOTI</h1>
+    <ul>
+        <li><a class="list-nv" href="/view_all">Ver Todos los Números</a></li>
+        <li><a class="list-nv" href="/most_frequent">Números Más Frecuentes</a></li>
+        <li><a class="list-nv" href="/type_frequencies">Tipo de Números que Más Salen</a></li> 
+        <li><a class="list-nv" href="/least_frequent">Números que Menos Salen</a></li>
+    </ul>
+    <div class="link-container">
+        <a class="link-text" href="/check_number_frequency">Verificar Frecuencia Manualmente</a>
+    </div>
+
+    <!-- Contenedor para la tabla de los últimos 7 resultados -->
+    <div class="table-containe mt-5">
+        <div class="container-custom">
+            <h2 class="mb-4"><i class="fas fa-chart-bar icon-header"></i> Bienvenido a Frequency Fun! <i class="fas fa-tada icon-header"></i></h2>
+            <p>¿Listo para convertir números en historias? Con <strong>Frequency Fun</strong>, ¡descubre la magia detrás de los números! <i class="fas fa-user-astronaut"></i> <i class="fas fa-star"></i></p>
+            
+            <h5 class="section-title mt-4 mb-3"><i class="fas fa-search"></i> ¿Qué hace esta app?</h5>
+            <ul class="list-unstyled text-left"> <!-- Alinea el texto a la izquierda dentro de la lista -->
+                <li><i class="fas fa-chart-line icon-list"></i><strong>Analiza tus datos:</strong> Encuentra qué números aparecen más a menudo y cuáles son los más raros.</li>
+                <li><i class="fas fa-filter icon-list"></i><strong>Filtra y explora:</strong> Ajusta los filtros para ver cómo cambian las frecuencias con el tiempo.</li>
+                <li><i class="fas fa-chart-pie icon-list"></i><strong>¡Dale vida a los números!:</strong> Visualiza y entiende tus datos de una manera fácil y entretenida.</li>
+            </ul>
+            <p class="mt-4">¡Conviértete en el maestro de las estadísticas y diviértete explorando el fascinante mundo de los números con <strong>Frequency Fun</strong>! <i class="fas fa-rocket"></i> <i class="fas fa-pencil-alt"></i></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 s4mudev</p>
+    </footer>
+    <script src="https://kit.fontawesome.com/eb64d71f74.js" crossorigin="anonymous"></script>
+</body>
+</html>
