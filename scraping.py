@@ -2,21 +2,32 @@ import requests
 from bs4 import BeautifulSoup
 import psycopg2
 from datetime import datetime
+import os
 
-# Configura tus credenciales y detalles de PostgreSQL
-HOST = 'localhost'
-DATABASE = 'APPLOTI'
-USER = 'postgres'
-PASSWORD = 'samuelloco123'
+# Configura las credenciales para la base de datos local y de Heroku
+LOCAL_HOST = 'localhost'
+LOCAL_DATABASE = 'APPLOTI'
+LOCAL_USER = 'postgres'
+LOCAL_PASSWORD = 'samuelloco123'
+
+# Obtén la URL de la base de datos de Heroku desde la variable de entorno
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 # Función para conectarse a PostgreSQL
 def get_db_connection():
-    conn = psycopg2.connect(
-        dbname=DATABASE,
-        user=USER,
-        password=PASSWORD,
-        host=HOST
-    )
+    if DATABASE_URL:
+        # Conectar a la base de datos de Heroku
+        print("Conectando a la base de datos de Heroku...")
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    else:
+        # Conectar a la base de datos local
+        print("Conectando a la base de datos local...")
+        conn = psycopg2.connect(
+            dbname=LOCAL_DATABASE,
+            user=LOCAL_USER,
+            password=LOCAL_PASSWORD,
+            host=LOCAL_HOST
+        )
     return conn
 
 # Función para hacer scraping y almacenar los datos
@@ -88,7 +99,6 @@ def scrape_and_store():
         print(f"Datos almacenados para la fecha {fecha}: {numero1}, {numero2}, {numero3}")
 
     conn.close()
-
 
 if __name__ == "__main__":
     scrape_and_store()
